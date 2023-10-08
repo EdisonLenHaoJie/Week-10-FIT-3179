@@ -1,0 +1,192 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1000,
+    "height": 900,
+    "title": "Top 15 Billionaires in the World",
+    "params": [
+      {
+        "name": "projection",
+        "value": "equalEarth",
+        "bind": {
+          "input": "select",
+          "options": [
+            "albers",
+            "albersUsa",
+            "azimuthalEqualArea",
+            "azimuthalEquidistant",
+            "conicConformal",
+            "conicEqualArea",
+            "conicEquidistant",
+            "equalEarth",
+            "equirectangular",
+            "gnomonic",
+            "mercator",
+            "naturalEarth1",
+            "orthographic",
+            "stereographic",
+            "transverseMercator"
+          ]
+        }
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "rect", "fill": "lightblue"},
+        "encoding": {
+          "x": {"value": 0},
+          "y": {"value": 0},
+          "x2": {"value": 1000},
+          "y2": {"value": 900}
+        }
+      },
+      {
+        "data": {
+          "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+          "format": {"type": "topojson", "feature": "countries"}
+        },
+        "projection": {"type": {"expr": "projection"}},
+        "mark": {"type": "geoshape", "fill": "lightgreen", "stroke": "gray"}
+      },
+      {
+        "data": {
+          "values": [
+            {
+              "Name": "Bernard Arnault & family",
+              "Age": 74,
+              "NetWorth": 211,
+              "Longitude": 2.35,
+              "Latitude": 48.85,
+              "Country": "France"
+            },
+            {
+              "Name": "Elon Musk",
+              "Age": 51,
+              "NetWorth": 180,
+              "Longitude": -98.25,
+              "Latitude": 33.86,
+              "Country": "United States"
+            },
+            {
+              "Name": "Jeff Bezos",
+              "Age": 59,
+              "NetWorth": 114,
+              "Longitude": -98.15,
+              "Latitude": 43.96,
+              "Country": "United States"
+            },
+            {
+              "Name": "Larry Ellison",
+              "Age": 78,
+              "NetWorth": 107,
+              "Longitude": -89.05,
+              "Latitude": 39.66,
+              "Country": "United States"
+            },
+            {
+              "Name": "Warren Buffett",
+              "Age": 92,
+              "NetWorth": 106,
+              "Longitude": -110.95,
+              "Latitude": 39.56,
+              "Country": "United States"
+            },
+            {
+              "Name": "Bill Gates ",
+              "Age": 67,
+              "NetWorth": 104,
+              "Longitude": -105.85,
+              "Latitude": 43.46,
+              "Country": "United States"
+            },
+            {
+              "Name": "Micheal Bloomberg",
+              "Age": 81,
+              "NetWorth": 94.5,
+              "Longitude": -105.55,
+              "Latitude": 35.63,
+              "Country": "United States"
+            },
+            {
+              "Name": "Carlos Slim Helu and family",
+              "Age": null,
+              "NetWorth": 93,
+              "Longitude": -102.55,
+              "Latitude": 23.63,
+              "Country": "Mexico"
+            },
+            {
+              "Name": "Mukesh Ambani",
+              "Age": 65,
+              "NetWorth": 83.4,
+              "Longitude": 78.96,
+              "Latitude": 20.59,
+              "Country": "India"
+            },
+            {
+              "Name": "Steve Ballmer",
+              "Age": 67,
+              "NetWorth": 80.7,
+              "Longitude": -101.35,
+              "Latitude": 38.1,
+              "Country": "United States"
+            },
+            {
+              "Name": "Francoise Bettencourt Meyers and family",
+              "Age": null,
+              "NetWorth": 80.5,
+              "Longitude": 1.88,
+              "Latitude": 46,
+              "Country": "France"
+            },
+            {
+              "Name": "Larry Page",
+              "Age": 50,
+              "NetWorth": 79.2,
+              "Longitude": -95,
+              "Latitude": 39.86,
+              "Country": "United States"
+            },
+            {
+              "Name": "Amancio Ortega",
+              "Age": 87,
+              "NetWorth": 77.3,
+              "Longitude": -3.74,
+              "Latitude": 40.46,
+              "Country": "Spain"
+            },
+            {
+              "Name": "Sergey Brin",
+              "Age": 49,
+              "NetWorth": 76,
+              "Longitude": -112.35,
+              "Latitude": 43.85,
+              "Country": "United States"
+            },
+            {
+              "Name": "Zhong Shanshan",
+              "Age": 68,
+              "NetWorth": 68,
+              "Longitude": 104.19,
+              "Latitude": 35.86,
+              "Country": "China"
+            }
+          ]
+        },
+        "mark": "point",
+        "encoding": {
+          "longitude": {"field": "Longitude", "type": "quantitative"},
+          "latitude": {"field": "Latitude", "type": "quantitative"},
+          "tooltip": [
+            {"field": "Name", "type": "nominal", "title": "Name"},
+            {"field": "Age", "type": "quantitative", "title": "Age"},
+            {
+              "field": "NetWorth",
+              "type": "quantitative",
+              "title": "Net Worth (Billion USD)"
+            },
+            {"field": "Country", "type": "nominal", "title": "Country"}
+          ]
+        }
+      }
+    ]
+  }
